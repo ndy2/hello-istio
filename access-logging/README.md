@@ -14,7 +14,7 @@ export SOURCE_POD=$(kubectl get pod -l app=curl -o jsonpath={.items..metadata.na
 kubectl exec "$SOURCE_POD" -c curl -- curl -sS -v httpbin:8000/status/418
 ```
 
-## 1. default
+#### 1. default
 
 ```bash
 istioctl install --set profile=demo \
@@ -33,7 +33,7 @@ istioctl install --set profile=demo \
 [2025-04-18T06:36:33.044Z] "GET /status/418 HTTP/1.1" 418 - via_upstream - "-" 0 13 0 0 "-" "curl/8.13.0" "b0bb62a4-a2ad-92a3-9ba8-5cbc42700ded" "httpbin:8000" "10.1.77.206:8080" inbound|8080|| 127.0.0.6:42729 10.1.77.206:8080 10.1.77.234:34528 invalid:outbound_.8000_._.httpbin.default.svc.cluster.local default
 ```
 
-## 2. json
+#### 2. json
 
 ```bash
 istioctl install --set profile=demo \
@@ -99,7 +99,7 @@ istioctl install --set profile=demo \
 }
 ```
 
-### 3. json with custom format
+#### 3. json with custom format
 
 - start time
 - custom header
@@ -121,3 +121,22 @@ istioctl install --set profile=demo \
   "start_time": "2025-04-18T06:49:06.312Z"
 }
 ```
+
+
+### Namespace Level
+
+```bash
+kubens foo
+kubectl create -f ef-merge.yaml
+kubectl create -f curl.yaml
+kubectl create -f httpbin.yaml
+```
+
+httpbin
+
+```log
+[2025-04-19T05:56:05.414Z] "GET /status/418 HTTP/1.1" 418 - via_upstream - "-" 0 13 0 0 "-" "curl/8.13.0" "6310e935-7d2f-9da3-bcf8-e08f0b46ad1f" "httpbin:8000" "10.244.0.13:8080" inbound|8080|| 127.0.0.6:56265 10.244.0.13:8080 10.244.0.12:36446 outbound_.8000_._.httpbin.foo.svc.cluster.local default
+{"start_time":"2025-04-19T05:56:05.414Z","custom_header":"value"}
+```
+
+
