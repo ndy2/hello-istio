@@ -139,4 +139,9 @@ httpbin
 {"start_time":"2025-04-19T05:56:05.414Z","custom_header":"value"}
 ```
 
+### Telemetry API
+
+ref.
+- https://istio.io/latest/docs/reference/config/telemetry/
+- https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyFileAccessLogProvider
 
