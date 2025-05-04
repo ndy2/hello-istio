@@ -1,0 +1,9 @@
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: default
+  namespace: foo
+spec:
+  accessLogging:
+    - providers:
+        - name: custom-logging-provider

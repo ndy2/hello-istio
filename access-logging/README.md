@@ -145,3 +145,14 @@ ref.
 - https://istio.io/latest/docs/reference/config/telemetry/
 - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyFileAccessLogProvider
 
+```bash
+istioctl install -f istiooperator.yaml
+kubectl create -f telemetry.yaml
+```
+
+=> foo ns 에만 적절한 format 줄 수 있다!
+
+```
+{"message":"","status":418}
+{"message":"","status":418}
+```
