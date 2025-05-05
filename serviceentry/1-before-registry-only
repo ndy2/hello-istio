@@ -1,0 +1,20 @@
+NAME                                                          VHOST NAME                                                    DOMAINS                                              MATCH                  VIRTUAL SERVICE
+8000                                                          httpbin.default.svc.cluster.local:8000                        httpbin, httpbin.default + 1 more...                 /*
+8000                                                          httpbin.foo.svc.cluster.local:8000                            httpbin.foo, 10.152.183.151                          /*
+9090                                                          kiali.istio-system.svc.cluster.local:9090                     kiali.istio-system, 10.152.183.148                   /*
+9090                                                          prometheus.istio-system.svc.cluster.local:9090                prometheus.istio-system, 10.152.183.33               /*
+15014                                                         istiod.istio-system.svc.cluster.local:15014                   istiod.istio-system, 10.152.183.144                  /*
+20001                                                         kiali.istio-system.svc.cluster.local:20001                    kiali.istio-system, 10.152.183.148                   /*
+kube-dns.kube-system.svc.cluster.local:9153                   kube-dns.kube-system.svc.cluster.local:9153                   *                                                    /*
+15010                                                         istiod.istio-system.svc.cluster.local:15010                   istiod.istio-system, 10.152.183.144                  /*
+istio-ingressgateway.istio-system.svc.cluster.local:15021     istio-ingressgateway.istio-system.svc.cluster.local:15021     *                                                    /*
+80                                                            2oujlno5e4.execute-api.us-east-1.amazonaws.com:80             2oujlno5e4.execute-api.us-east-1.amazonaws.com       /*
+80                                                            curl.default.svc.cluster.local:80                             curl, curl.default + 1 more...                       /*
+80                                                            curl.foo.svc.cluster.local:80                                 curl.foo, 10.152.183.36                              /*
+80                                                            istio-ingressgateway.istio-system.svc.cluster.local:80        istio-ingressgateway.istio-system, 10.152.183.27     /*
+                                                              backend                                                       *                                                    /stats/prometheus*
+                                                              backend                                                       *                                                    /healthz/ready*
+inbound|80||                                                  inbound|http|80                                               *                                                    /*
+inbound|80||                                                  inbound|http|80                                               *                                                    /*
+InboundPassthroughCluster                                     inbound|http|0                                                *                                                    /*
+InboundPassthroughCluster                                     inbound|http|0                                                *                                                    /*
